@@ -73,7 +73,7 @@ class CheckoutController extends Controller
                 Cart::destroy($cart);
                 return response()->json([
                     'status' => 200,
-                    'message' => $request->first_name
+                    'message' => $request->first_name.' '.$request->lastname
                 ]);
             }
         }
