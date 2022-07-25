@@ -95,7 +95,7 @@ class CheckoutController extends Controller
     
             return response()->json([
                 'status' => 200,
-                'order' => $order
+                'order' => $order         
             ]);
         }
         else
