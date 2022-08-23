@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\CartController;
+use App\Http\Controllers\API\WishlistController;
 use App\Http\Controllers\API\CheckoutController;
 use App\Http\Controllers\CategoryController;
 
@@ -37,6 +38,12 @@ Route::post('/add-to-cart',[CartController::class,'addToCart']);
 Route::get('/cart',[CartController::class,'viewCart']);
 Route::put('/update-cart/{id}/{scop}',[CartController::class,'updateCart']);
 Route::delete('/delete-cart/{id}',[CartController::class,'deleteCart']);
+
+// add to wishlist
+Route::post('/add-to-wishlist',[WishlistController::class,'addToWish']);
+Route::get('/wishlist',[WishlistController::class,'viewWishlist']);
+Route::delete('/delete-wishlist/{id}',[WishlistController::class,'deleteWishlist']);
+
 
 // checkout
 Route::post('/place-order',[CheckoutController::class,'placeOrder']);

@@ -23,8 +23,7 @@ class CartController extends Controller
             
             $productCheck = Product::find($product_id);
             
-
-            if($productCheck)
+            if($productCheck && !($productCheck->qty <= 0))
             {
                 if(Cart::where('user_id',$user_id)->where('product_id',$product_id)->exists())
                 {
@@ -133,10 +132,15 @@ class CartController extends Controller
             if($cart)
             {
                 $cart->delete();
+               
+                $user_id = auth('sanctum')->user()->id;
+
+                $cartItems = Cart::where('user_id',$user_id)->get();
 
                 return response()->json([
                     'status' => 200,
-                    'message' => "Item removed from Cart"
+                    'message' => "Item removed from Cart",
+                    'cart' => $cartItems
                 ]);
             }
             else

@@ -164,7 +164,7 @@ class CategoryController extends Controller
 
     public function frontendCategories()
     {
-        $categories = Category::limit(3)->get();
+        $categories = Category::limit(4)->get();
 
         return response()->json([
             'status' => 200,
